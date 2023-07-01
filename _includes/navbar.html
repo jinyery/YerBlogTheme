@@ -15,11 +15,16 @@
           <a class="nav-link" href="{{"/about" | relative_url }}">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ "/posts" | relative_url }}">Posts</a>
+          <a class="nav-link" href="{{ "/archive" | relative_url }}">Archive</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{"/contact" | relative_url }}">Contact</a>
         </li>
+        {% if site.special_nav_item %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.special_nav_link | relative_url }}">{{site.special_nav_item}}</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>

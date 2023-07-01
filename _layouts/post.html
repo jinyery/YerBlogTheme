@@ -48,7 +48,29 @@ layout: default
           {% endif %}
 
         </div>
+        
+        {% if site.utterances_repo %}
+        <script src="https://utteranc.es/client.js"
+                repo="{{site.utterances_repo}}"
+                {% if site.utterances_label %}
+                label="{{site.utterances_label}}"
+                {% endif %}
 
+                {% if site.utterances_theme %}
+                theme="{{site.utterances_theme}}"
+                {% else %}
+                theme="github-light"
+                {% endif %}
+
+                {% if site.utterances_issue_term %}
+                issue-term="{{site.utterances_issue_term}}"
+                {% else %}
+                issue-term="pathname"
+                {% endif %}
+                crossorigin="anonymous"
+                async>
+        </script>
+        {% endif %}
       </div>
     </div>
   </div>

@@ -1,25 +1,39 @@
-title:              Clean Blog
+title:              YerBlog
 email:              your-email@example.com
-description:        A Blog Theme by Start Bootstrap
-author:             Start Bootstrap
-baseurl:            "/startbootstrap-clean-blog-jekyll"
-url:                "https://startbootstrap.github.io"
+description:        A Jekyll Blog Theme by jinyery
+author:             jinyery
+baseurl:            ""
+url:                "https://blog.yer.xyz"
 
 # Social Profiles
-twitter_username:   SBootstrap
-github_username:    StartBootstrap
-facebook_username:  StartBootstrap
-instagram_username:  
-linkedin_username:
+zhihu_username:     jinyery
+weibo_username:     jinyery
+github_username:    jinyery
+twitter_username:   jinyery
+facebook_username:  
+linkedin_username:  
+instagram_username: 
 
 # Add your google-analytics ID here to activate google analytics
 google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 
 # Build settings
 markdown:           kramdown
-paginate:           5
-paginate_path:      "/posts/page:num/"
 plugins:
   - jekyll-feed
-  - jekyll-paginate
   - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
+
+# Website registration number in Chinese Mainland.
+icp: 
+
+# Add your custom nav item to the nav bar.
+# Note that this item cannot be an array, as our philosophy is restraint.
+special_nav_item: 
+special_nav_link: 
+
+# A Lightweight Blog Comment System Based on Github Issues: Utterances.
+# You can refer to https://utteranc.es/
+utterances_repo: 
+utterances_label:   
+utterances_theme:   # default to github-light
+utterances_issue_term: # default to pathname

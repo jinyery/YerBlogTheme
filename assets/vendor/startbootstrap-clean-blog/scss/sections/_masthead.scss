@@ -45,6 +45,17 @@ header.masthead {
             display: block;
             margin: 10px 0 0;
             font-family: $headings-font-family;
+
+            &:before {
+                content: "「 ";
+                font-size: 21px;
+                vertical-align: top;
+            }
+            &:after {
+                content: " 」";
+                font-size: 21px;
+                vertical-align: bottom;
+            }
         }
 
         @media only screen and (min-width: 768px) {
