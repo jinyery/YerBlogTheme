@@ -1,7 +1,7 @@
 title:              YerBlog
-email:              your-email@example.com
 description:        A Jekyll Blog Theme by jinyery
 author:             jinyery
+email:              your-email@example.com
 baseurl:            ""
 url:                "https://blog.yer.xyz"
 
@@ -15,13 +15,13 @@ linkedin_username:
 instagram_username: 
 
 # Add your google-analytics ID here to activate google analytics
-google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+google_analytics:   X-XXXXXXXXX # out your google-analytics code
 
 # Build settings
 markdown:           kramdown
 plugins:
   - jekyll-feed
-  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
+  - jekyll-sitemap
 
 # Website registration number in Chinese Mainland.
 icp: 
