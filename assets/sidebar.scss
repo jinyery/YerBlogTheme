@@ -1,0 +1,14 @@
+---
+
+--- 
+
+.sidebar-container {
+    color: red;
+    font-size: 10px;
+}
+
+@media (max-width: 1200px) {
+    .sidebar-container {
+        display: none;
+    }
+}

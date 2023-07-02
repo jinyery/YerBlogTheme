@@ -72,5 +72,21 @@ layout: default
         </script>
         {% endif %}
       </div>
+
+      {% if site.catalog %}
+      {% if page.catalog %}
+      <div class="
+          col-lg-2 col-lg-offset-0
+          visible-lg-block
+          sidebar-container">
+          {% assign my_min = page.toc_min | default: site.toc_min | default: 1 %}
+          {% assign my_max = page.toc_max | default: site.toc_max | default: 4 %}
+          <div class="sidebar-title">Catalog</div>
+          <div class="sidebar-content">
+              {% include toc.html class="side-catalog" html=content sanitize=true h_min=my_min h_max=my_max %}
+          </div>
+      </div>
+      {% endif %}
+      {% endif %}
     </div>
   </div>
