@@ -1,0 +1,73 @@
+---
+layout: page
+---
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+<style>
+    #archive_tags {
+        margin-bottom: 50px;
+    }
+    #archive_tags .archive_tag {
+        margin: 0 5px;
+    }
+</style>
+<div id="archive_app">
+    {{ content }}
+    <div id="archive_tags">
+        <button type="button" class="btn btn-outline-dark archive_tag" :class="{active: is_selected('all')}" @click="select_tag('all')">
+            All<sup>{{site.posts.size}}</sup></button>
+        {% raw %}
+        <template v-for="tag in all_tags">
+            <button type="button" class="btn btn-outline-dark archive_tag" :class="{active: is_selected(tag.name)}" @click="select_tag(tag.name)">
+                {{tag.name}}<sup>{{tag.size}}</sup></button>
+        </template>
+        {% endraw %}
+    </div>
+
+
+    <div id="archive_content">
+        {% raw %}
+        <template v-for="post in all_posts">
+            <div v-show="selected_tag == 'all' || post.tags.includes(selected_tag)">
+                <article class="post-preview">
+                    <a :href="post.url">
+                        <h2 class="post-title">{{ post.title }}</h2>
+                        <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+                    </a>
+                    <p class="post-meta">Posted by {{ post.author }}
+                        on <span style="font-weight: bolder;">{{ post.date }}</span> &middot;
+                        <span v-html="post.real_time"></span>
+                    </p>
+                </article>
+                <hr>
+            </div>
+        </template>
+        {% endraw %}
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#archive_app',
+        data: {
+            selected_tag: "all",
+            all_tags: [{% for tag in site.tags %}{ name: "{{tag[0]}}", size: {{ tag[1].size }}}, {% endfor %}],
+        all_posts: [{% for post in site.posts %}{
+        title: "{{post.title}}",
+            {% if post.subtitle %} subtitle: "{{post.subtitle}}", {% else %}
+    subtitle: "{{ post.excerpt | strip_html | truncatewords: 15 }}", {% endif %}
+    {% if post.author %} author: "{{ post.author }}", {% else %}
+    author: "{{ site.author }}", {% endif %}
+    date: "{{ post.date | date: '%B %d, %Y' }}",
+        {% capture real_time %}{% include read_time.html content = post.content %} {% endcapture %}
+    real_time: '{{real_time | strip_newlines | strip}}',
+        url: "{{ post.url | prepend: site.baseurl | replace: '//', '/' }}",
+            tags: [{% for tag in post.tags %}"{{tag}}", {% endfor %}]
+            }, {% endfor %}]
+        },
+    methods: {
+        select_tag: function(tag) { this.selected_tag = tag },
+        is_selected: function(tag) {return this.selected_tag == tag}
+    }
+    });
+</script>

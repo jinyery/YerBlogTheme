@@ -1,13 +1,12 @@
----
-permalink: /404.html
----
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>404 | YerBlog</title>
+    <title>
+        {% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}
+        {% else %}404 - {{ site.title | escape }}{% endif %}
+    </title>
     <style>
         html,
         body {
@@ -129,7 +128,10 @@ permalink: /404.html
             <div class="right-arm arm"></div>
         </div>
     </div>
-    <p> maybe you want to go <a href='{{ site.url }}'>back? </a></p>
+    <p> 
+        {% if page.description %}{{ page.description | escape }}
+        {% else %}maybe you want to go <a href='{{ site.url }}'>back? </a>{% endif %}
+    </p>
 
 </body>
 
