@@ -39,3 +39,7 @@ utterances_theme:   # default to github-light
 utterances_issue_term: # default to pathname
 
 catalog: true
+
+# Your formspree token
+# If you want to use prefabricated "contact" layout, this is necessary.
+formspree: 
