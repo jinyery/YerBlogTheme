@@ -7,6 +7,7 @@ layout: page
     #archive_tags {
         margin-bottom: 50px;
     }
+
     #archive_tags .archive_tag {
         margin: 0 5px;
     }
@@ -14,11 +15,13 @@ layout: page
 <div id="archive_app">
     {{ content }}
     <div id="archive_tags">
-        <button type="button" class="btn btn-outline-dark archive_tag" :class="{active: is_selected('all')}" @click="select_tag('all')">
+        <button type="button" class="btn btn-outline-dark archive_tag" :class="{active: is_selected(null)}"
+            @click="select_tag(null)">
             All<sup>{{site.posts.size}}</sup></button>
         {% raw %}
         <template v-for="tag in all_tags">
-            <button type="button" class="btn btn-outline-dark archive_tag" :class="{active: is_selected(tag.name)}" @click="select_tag(tag.name)">
+            <button type="button" class="btn btn-outline-dark archive_tag" :class="{active: is_selected(tag.name)}"
+                @click="select_tag(tag.name)">
                 {{tag.name}}<sup>{{tag.size}}</sup></button>
         </template>
         {% endraw %}
@@ -28,7 +31,7 @@ layout: page
     <div id="archive_content">
         {% raw %}
         <template v-for="post in all_posts">
-            <div v-show="selected_tag == 'all' || post.tags.includes(selected_tag)">
+            <div v-show="selected_tag == null || post.tags.includes(selected_tag)">
                 <article class="post-preview">
                     <a :href="post.url">
                         <h2 class="post-title">{{ post.title }}</h2>
@@ -47,10 +50,12 @@ layout: page
 </div>
 
 <script>
+    urlSearchParams = new URLSearchParams(location.search)
+    curTag = urlSearchParams.get("tag")
     new Vue({
         el: '#archive_app',
         data: {
-            selected_tag: "all",
+            selected_tag: curTag,
             all_tags: [{% for tag in site.tags %}{ name: "{{tag[0]}}", size: {{ tag[1].size }}}, {% endfor %}],
         all_posts: [{% for post in site.posts %}{
         title: "{{post.title}}",
@@ -67,7 +72,7 @@ layout: page
         },
     methods: {
         select_tag: function(tag) { this.selected_tag = tag },
-        is_selected: function(tag) {return this.selected_tag == tag}
+        is_selected: function(tag) { return this.selected_tag == tag }
     }
     });
 </script>

@@ -21,7 +21,7 @@ header.masthead {
     .page-heading,
     .post-heading,
     .site-heading {
-        padding: 200px 0 150px;
+        padding: 190px 0 150px;
         color: white;
 
         @media only screen and (min-width: 768px) {
@@ -102,6 +102,29 @@ header.masthead {
             .subheading {
                 font-size: 30px;
             }
+        }
+
+        .tag_container {
+            line-height: 2;
+            margin-top: 25px;
+            margin-bottom: 0px;
+        }
+
+        .tag {
+            color: inherit;
+            font-size: 18px;
+            border-radius: 15px;
+            border: 1px solid white;
+            padding: 6px 12px;
+            margin-right: 13px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .tag:hover {
+            color: inherit;
+            box-shadow: 2px 2px 5px #333;
+            background-color: #333;
         }
     }
 }
